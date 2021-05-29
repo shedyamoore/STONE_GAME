@@ -18,7 +18,7 @@ import java.util.List;
  * This class follows singleton design pattern
  */
 public class FileManager {
-    public static final String FILENAME = "/gamedata.json";
+    public static final String FILENAME = "gamedata.json";
     private static FileManager instance;
     private List<GameBoard> games;
     private static Logger logger = LogManager.getLogger(FileManager.class);
