@@ -5,6 +5,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import stones.Game;
 import stones.models.GameBoard;
 import stones.models.GameSession;
@@ -19,10 +21,14 @@ public class InformationController {
     public Label label;
     public TextField secondPlayerField;
     public TextField firstPlayerField;
-
     /**
+     * Application logger
+     */
+    private static final Logger logger = LogManager.getLogger();
+    /**
+     * it checks if the user has entered valid name or not
      * @param actionEvent when continue button is pressed
-     *                    it checks if the user has entered valid name or not
+     *
      */
     public void onStart(ActionEvent actionEvent) {
         String firstPlayer = firstPlayerField.getText();
@@ -38,9 +44,8 @@ public class InformationController {
 
 
         try {
-            /*TextInputDialog td = new TextInputDialog("enter any text");
-            td.showAndWait();
-            label.setText(td.getEditor().getText());*/
+            logger.info("Player1 name is "+firstPlayer);
+            logger.info("Player2 name is "+secondPlayer);
             GameSession.getInstance().setGameBoard(new GameBoard(new Player(firstPlayer),new Player(secondPlayer)));
                 Game.setRoot("game_frame");
         } catch (IOException e) {
@@ -50,6 +55,7 @@ public class InformationController {
 
     public void onBackBtnClicked(ActionEvent actionEvent) {
         try {
+            logger.info("Back Button Clicked");
             Game.setRoot("home");
         } catch (IOException e) {
             e.printStackTrace();

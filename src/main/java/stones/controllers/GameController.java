@@ -10,6 +10,8 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import stones.Game;
 import stones.models.FileManager;
 import stones.models.GameBoard;
@@ -25,7 +27,7 @@ import java.util.ResourceBundle;
  * creation of buttons and platform for the input of the player names
  */
 public class GameController implements Initializable {
-
+    private static final Logger logger = LogManager.getLogger();
     public Label player1Name;
     public Label player2Name;
     public Button btnA;
@@ -54,15 +56,18 @@ public class GameController implements Initializable {
     }
 
     /**
+     * method to initialize interface to load the graphics
      * @param url
      * @param resourceBundle
-     * Initializable interface to load the graphics
+     *
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (gameBoard != null) {
             player1Name.setText(gameBoard.getPlayer1().getName());
             player2Name.setText(gameBoard.getPlayer2().getName());
+            logger.info("Player 1 Name is "+player1Name);
+            logger.info("Player 2 Name is "+player2Name);
         }
         updateTurn();
     }
@@ -78,15 +83,15 @@ public class GameController implements Initializable {
         } else {
             player2Name.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
             player1Name.setBackground(new Background(new BackgroundFill(Color.YELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
-
         }
+        logger.info("Update turn method");
     }
 
 
     /**
-     * @param actionEvent
      * when the skip button is pressed it skips a turn and the next player moves
      * game moves automatically but when skip is pressed it become manual
+     * @param actionEvent
      */
     public void onSkipBtnClicked(ActionEvent actionEvent) {
         gameBoard.skipTurn();
@@ -94,8 +99,9 @@ public class GameController implements Initializable {
     }
 
     /**
+     * when the reset button is pressed it resets the game board and updates the views
      * @param actionEvent
-     * when the reset button is pressed it resets the gameboard an dupdates the views
+     *
      */
     public void onResetBtnClicked(ActionEvent actionEvent) {
         gameBoard = new GameBoard(new Player(gameBoard.getPlayer1().getName()),new Player(gameBoard.getPlayer2().getName()));
@@ -104,12 +110,14 @@ public class GameController implements Initializable {
     }
 
     /**
-     * @param actionEvent
      * when back button is pressed application goes back to home screen
+     * @param actionEvent
+     *
      */
     public void onBackBtnClicked(ActionEvent actionEvent) {
         try {
             Game.setRoot("home");
+            logger.info("Back button click");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -117,11 +125,13 @@ public class GameController implements Initializable {
 
 
     /**
-     * @param actionEvent
      * makes a move on the screen
+     * @param actionEvent
+     *
      */
     public void makeMove(ActionEvent actionEvent) {
         Button button = (Button) actionEvent.getSource();
+        logger.info("button Id is "+button.getId());
         switch (button.getId()) {
             case "btnA":
                 gameBoard.makeTurn(0, 0);
@@ -179,6 +189,7 @@ public class GameController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Winner");
             alert.setHeaderText("Player: "+gameBoard.getWinner().getName()+" has won");
+            logger.info("Player: "+gameBoard.getWinner().getName()+" has won");
             alert.setContentText(null);
             alert.showAndWait();
             gameBoard.reset();
@@ -189,7 +200,7 @@ public class GameController implements Initializable {
 
     /**
      * updates the grid turns on and of the views on the screen
-     * by looping through the array  and seeting the viisibilty of thr buttons
+     * by looping through the array  and setting the visibility of the buttons
      */
     private void updateBoard() {
         for (int i = 0; i < 4; i++) {
@@ -205,8 +216,13 @@ public class GameController implements Initializable {
 
         }
     }
-
+    /**
+     * method to get the button based on its position
+     * @param index
+     *
+     */
     private Button getButton(int index) {
+        logger.info("Button index is "+ index);
         switch (index) {
             case 0:
                 return btnA;

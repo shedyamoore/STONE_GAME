@@ -34,11 +34,14 @@ public class FileManager {
     }
 
     /**
+     * method to return an instance of file manager
      * @return this returns the instance of this class
      */
     public static FileManager getInstance() {
-        if (instance == null)
+        if (instance == null) {
             instance = new FileManager();
+            logger.info(instance);
+        }
         return instance;
     }
 
@@ -73,6 +76,7 @@ public class FileManager {
                 gameBoard.getPlayer1().setMoves(moves1);
                 gameBoard.getPlayer2().setMoves(moves2);
                 gameBoard.setWinner(winner);
+                logger.info(winner);
                 games.add(gameBoard);
             }
 
@@ -84,12 +88,14 @@ public class FileManager {
 
 
     /**
-     * @param game  we add a new log file
-     *             thus this methods adds a new log to file
+     * this methods adds a new log to file
+     * @param game
+     *
      */
     public void addLog(GameBoard game) {
         games.add(game);
         try {
+            logger.info("About to write to json db");
             writeJson(game);
         } catch (Exception e) {
             e.printStackTrace();
@@ -126,6 +132,7 @@ public class FileManager {
         sampleObject.addProperty("winner", gameboard.getWinner().getName());
         sampleObject.addProperty("player1numberOfMoves", gameboard.getPlayer1().getMoves());
         sampleObject.addProperty("player2numberOfMoves", gameboard.getPlayer2().getMoves());
+        logger.info("About to save finished game with winner name :"+ gameboard.getWinner());
         array.add(sampleObject);
         FileWriter writer =
                 new FileWriter(
@@ -147,15 +154,17 @@ public class FileManager {
     }
 
     /**
-     * @return all games list
+     * method to return list of gameboard
+     * @return List<GameBoard>
      */
     public List<GameBoard> getGames() {
         return games;
     }
 
     /**
-     * @return  we get all the winners and put them in a  list
-     * returns all winners list this is a mehtod to retyurn all the winners in the list by using
+     * This is a method to return all the winners in the list, then put them in a  list
+     * @return List<Player>
+     *
      */
     public List<Player> getWinners() {
         read_logs();
@@ -167,6 +176,7 @@ public class FileManager {
             } else {
                 players.add(game.getPlayer2());
             }
+            logger.info("Game Session winner is "+ game.getWinner());
         }
         return players;
     }

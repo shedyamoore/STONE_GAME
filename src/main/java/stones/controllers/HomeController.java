@@ -5,6 +5,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import stones.Game;
 import stones.models.FileManager;
 import stones.models.Player;
@@ -16,15 +18,13 @@ import java.io.IOException;
  */
 public class HomeController {
     public Label label;
-
+    private static final Logger logger = LogManager.getLogger();
     /**
-     * @param actionEvent when the start button is pressed
+     * method that triggers when the start button is pressed
+     * @param actionEvent
      */
     public void onStart(ActionEvent actionEvent) {
         try {
-//            TextInputDialog td = new TextInputDialog("enter any text");
-//            td.showAndWait();
-//            label.setText(td.getEditor().getText());
                 Game.setRoot("information");
         } catch (IOException e) {
             e.printStackTrace();
@@ -32,13 +32,15 @@ public class HomeController {
     }
 
     /**
-     * @param actionEvent when the score button is pressed
+     * Method that get triggers  when the score button is pressed
+     * @param actionEvent
      */
     public void onHighScoreBtnClicked(ActionEvent actionEvent) {
 
         // this codes controls the dialogue box
         Dialog dlg = new Dialog();
         dlg.setTitle("Top 5 Players");
+        logger.info("On High Score click");
         ObservableList<Player> gameSessions = FXCollections.observableList(FileManager.getInstance().getWinners());
         TableView<Player> listTable = new TableView<>();
         TableColumn columnName = new TableColumn("Player name");

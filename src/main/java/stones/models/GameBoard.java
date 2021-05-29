@@ -1,5 +1,8 @@
 package stones.models;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,11 +18,12 @@ public class GameBoard {
     private List<Integer> turns;
     private int totalTurns = 0;
     private boolean hasWon = false;
-
+    private static Logger logger = LogManager.getLogger(FileManager.class);
     /**
+     * constructs a new game board
      * @param player1 first player
      * @param player2 second player
-     * constructs a new game board
+     *
      */
     public GameBoard(Player player1, Player player2) {
         this.player1 = player1;
@@ -30,11 +34,10 @@ public class GameBoard {
     }
 
     /**
+     * makes move and if 4 moves are done then turn is automatically shifted to other player
+     * This also checks if the turn is valid and is adjacent to last few turns by same player
      * @param i i position
      * @param j j position
-     * makes move and if 4 moves are done then turn is automatically shifted to other player
-     * This checks if the turn is valid and is adjacent to last few turns by same player
-     *
      *
      */
     public void makeTurn(int i, int j) {
@@ -67,9 +70,13 @@ public class GameBoard {
             if (!valid)
                 return;
         }
-        if (turn)
+        if (turn) {
+            logger.info("Player1 turn");
             player1.move();
-        else
+        }
+        else{
+            logger.info("Player2 turn");
+        }
             player2.move();
         array[i][j] = false;
         checkWinner();
@@ -96,7 +103,8 @@ public class GameBoard {
     }
 
     /**
-     * @return total turns made so far
+     * return total turns made so far
+     * @return int
      */
     public int getTotalTurns() {
         return totalTurns;
@@ -116,7 +124,7 @@ public class GameBoard {
         player1.reset();
         player2.reset();
         hasWon = false;
-
+        logger.info("Game reset");
 
     }
 
@@ -132,27 +140,31 @@ public class GameBoard {
 
 
     /**
-     * @return first player
+     * method to return first player
+     * @return Player
      */
     public Player getPlayer1() {
         return player1;
     }
 
     /**
-     * @return second player
+     * Method to return the second player
+     * @return Player
      */
     public Player getPlayer2() {
         return player2;
     }
 
     /**
-     * @return 2D array representation of stones
+     * 2D array representation of stones
+     * @return Boolean
      */
     public boolean[][] getArray() {
         return array;
     }
 
     /**
+     * method to check if is player1 or player2 turn
      * @return this returns the current players turn
      */
     public boolean isPlayer1Turn() {
@@ -160,8 +172,10 @@ public class GameBoard {
     }
 
     /**
-     * @return if there is a winner it returns the winner
+     * if there is a winner it returns the winner
      * else returns null
+     * @return
+     *
      */
     public Player getWinner() {
         if (hasWon)
@@ -173,8 +187,9 @@ public class GameBoard {
     }
 
     /**
-     * @param winner set winner to help by
-     *  reading the file
+     * method to set turn and haswon property
+     * @param winner
+     *
      */
     public void setWinner(String winner) {
         if (player1.getName().equalsIgnoreCase(winner)) {
@@ -184,5 +199,6 @@ public class GameBoard {
             turn = false;
             hasWon = true;
         }
+        logger.info("Has won "+hasWon);
     }
 }
