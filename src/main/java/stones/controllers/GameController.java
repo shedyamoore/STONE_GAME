@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
 
 /**
  * Contoller class for main gameview
+ * creation of buttons and platform for the input of the player names
  */
 public class GameController implements Initializable {
 

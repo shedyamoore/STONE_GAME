@@ -153,14 +153,15 @@ public class GameBoard {
     }
 
     /**
-     * @return current players turn
+     * @return this returns the current players turn
      */
     public boolean isPlayer1Turn() {
         return turn;
     }
 
     /**
-     * @return if there is a winner it returns else returns null
+     * @return if there is a winner it returns the winner
+     * else returns null
      */
     public Player getWinner() {
         if (hasWon)
@@ -172,7 +173,8 @@ public class GameBoard {
     }
 
     /**
-     * @param winner set winner to help reading the file
+     * @param winner set winner to help by
+     *  reading the file
      */
     public void setWinner(String winner) {
         if (player1.getName().equalsIgnoreCase(winner)) {

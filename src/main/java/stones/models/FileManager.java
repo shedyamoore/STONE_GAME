@@ -25,7 +25,8 @@ public class FileManager {
     Level myLevel = Level.forName("FILEMANAGER", 350);
 
     /**
-     * private constructor to prevent access from outside the class
+     * this is a private constructor to prevent access from outside the class
+     * it is essential to prevent it from the outside class
      */
     private FileManager() {
         games = new ArrayList<>();
@@ -33,7 +34,7 @@ public class FileManager {
     }
 
     /**
-     * @return instance of this class
+     * @return this returns the instance of this class
      */
     public static FileManager getInstance() {
         if (instance == null)
@@ -42,7 +43,7 @@ public class FileManager {
     }
 
     /**
-     * reads the logs and loads them in games List
+     * this method reads the logs and loads them in games List
      */
     private void read_logs() {
         games.clear();
@@ -83,7 +84,8 @@ public class FileManager {
 
 
     /**
-     * @param game adding a new log to file
+     * @param game  we add a new log file
+     *             thus this methods adds a new log to file
      */
     public void addLog(GameBoard game) {
         games.add(game);
@@ -152,7 +154,8 @@ public class FileManager {
     }
 
     /**
-     * @return returns all winners list this is a mehtod to retyurn all the winners in the list by using
+     * @return  we get all the winners and put them in a  list
+     * returns all winners list this is a mehtod to retyurn all the winners in the list by using
      */
     public List<Player> getWinners() {
         read_logs();

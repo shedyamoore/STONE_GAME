@@ -6,7 +6,9 @@
     <artifactId>homework-template-project</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <description></description>
+    <description>this is a game called s stone game players move in turns and a player can take  a maximum of 4 stones
+    if a player takes more than one stone then the stones have to be adjacent to each other the winner of the game is the
+    player  who takes the last stone.</description>
     <developers>
         <developer>
             <name> EHIGBAI DANIEL</name>
