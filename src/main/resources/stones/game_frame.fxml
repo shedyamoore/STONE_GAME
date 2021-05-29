@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: yellow;" stylesheets="@/stones/styles/app.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stones.controllers.GameController">
+   <children>
+      <Label fx:id="label" layoutX="151.0" layoutY="14.0" prefHeight="50.0" prefWidth="298.0" text="Welcome to Stone Game">
+         <padding>
+            <Insets bottom="20.0" />
+         </padding>
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label fx:id="player1Name" layoutX="52.0" layoutY="65.0" text="Player1: Name">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding></Label>
+      <Label fx:id="player2Name" layoutX="476.0" layoutY="65.0" text="Player2: Name">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding></Label>
+
+
+       <GridPane fx:id="table" gridLinesVisible="true" layoutX="160.0" layoutY="172.0">
+           <columnConstraints>
+               <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="10.0" prefWidth="70.0" />
+               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
+               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
+               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
+           </columnConstraints>
+           <rowConstraints>
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           </rowConstraints>
+           <children>
+               <Button fx:id="btnA" mnemonicParsing="false" onAction="#makeMove" styleClass="stone-button" />
+               <Button fx:id="btnB" mnemonicParsing="false" onAction="#makeMove" styleClass="stone-button" GridPane.columnIndex="1" />
+               <Button fx:id="btnC" mnemonicParsing="false" onAction="#makeMove" styleClass="stone-button" GridPane.columnIndex="2" />
+               <Button fx:id="btnD" mnemonicParsing="false" onAction="#makeMove" styleClass="stone-button" GridPane.columnIndex="3" />
+               <Button fx:id="btnE" mnemonicParsing="false" onAction="#makeMove" styleClass="stone-button" GridPane.rowIndex="1" />
+               <Button fx:id="btnF" mnemonicParsing="false" onAction="#makeMove" styleClass="stone-button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               <Button fx:id="btnG" mnemonicParsing="false" onAction="#makeMove" styleClass="stone-button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+               <Button fx:id="btnH" mnemonicParsing="false" onAction="#makeMove" styleClass="stone-button" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+               <Button fx:id="btnI" mnemonicParsing="false" onAction="#makeMove" styleClass="stone-button" GridPane.rowIndex="2" />
+               <Button fx:id="btnJ" mnemonicParsing="false" onAction="#makeMove" styleClass="stone-button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               <Button fx:id="btnK" mnemonicParsing="false" onAction="#makeMove" styleClass="stone-button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+               <Button fx:id="btnL" mnemonicParsing="false" onAction="#makeMove" styleClass="stone-button" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+               <Button fx:id="btnM" mnemonicParsing="false" onAction="#makeMove" styleClass="stone-button" GridPane.rowIndex="3" />
+               <Button fx:id="btnN" mnemonicParsing="false" onAction="#makeMove" styleClass="stone-button" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               <Button fx:id="btnO" mnemonicParsing="false" onAction="#makeMove" styleClass="stone-button" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+               <Button fx:id="btnP" mnemonicParsing="false" onAction="#makeMove" styleClass="stone-button" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+           </children>
+       </GridPane>
+      <Button fx:id="skipBtn" layoutX="262.0" layoutY="324.0" mnemonicParsing="false" onAction="#onSkipBtnClicked" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: red;" text="Skip" />
+      <Button layoutX="515.0" layoutY="324.0" mnemonicParsing="false" onAction="#onResetBtnClicked" style="-fx-background-color: red;" text="ResetGame" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackBtnClicked" prefHeight="25.0" prefWidth="44.0" style="-fx-background-color: red;" text="&lt;" />
+
+
+   </children>
+</AnchorPane>
