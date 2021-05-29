@@ -60,7 +60,7 @@ public class FileManager {
             old = "[]";
             }
 
-            logger.log(myLevel,old);
+
 
             JsonArray array = new Gson().fromJson(old, JsonArray.class);
 
@@ -114,9 +114,9 @@ public class FileManager {
         try{
             BufferedReader reader = new BufferedReader(new FileReader(file));
 
-            logger.log(myLevel,"Writing to file: "+file.getAbsolutePath());
+
             old = reader.readLine();
-            logger.log(myLevel,old);
+
 
             reader.close();
         }catch (FileNotFoundException e){
