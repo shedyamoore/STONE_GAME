@@ -23,11 +23,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Contoller class for main gameview
+ * Controller class for main game view
  * creation of buttons and platform for the input of the player names
  */
 public class GameController implements Initializable {
-    private static final Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger(GameController.class);
     public Label player1Name;
     public Label player2Name;
     public Button btnA;
@@ -49,7 +49,7 @@ public class GameController implements Initializable {
     private GameBoard gameBoard;
 
     /**
-     * default constructor to get gameboard instance from GameSession
+     * default constructor to get game board instance from GameSession
      */
     public GameController() {
         gameBoard = GameSession.getInstance().getGameBoard();
@@ -66,8 +66,8 @@ public class GameController implements Initializable {
         if (gameBoard != null) {
             player1Name.setText(gameBoard.getPlayer1().getName());
             player2Name.setText(gameBoard.getPlayer2().getName());
-            logger.info("Player 1 Name is "+player1Name);
-            logger.info("Player 2 Name is "+player2Name);
+            logger.info("Player 1 Name is "+player1Name.getText());
+            logger.info("Player 2 Name is "+player2Name.getText());
         }
         updateTurn();
     }

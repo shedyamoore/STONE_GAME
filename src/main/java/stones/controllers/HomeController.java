@@ -18,13 +18,16 @@ import java.io.IOException;
  */
 public class HomeController {
     public Label label;
-    private static final Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger(HomeController.class);
     /**
      * method that triggers when the start button is pressed
      * @param actionEvent
      */
     public void onStart(ActionEvent actionEvent) {
         try {
+            //            TextInputDialog td = new TextInputDialog("enter any text");
+//            td.showAndWait();
+//            label.setText(td.getEditor().getText());
                 Game.setRoot("information");
         } catch (IOException e) {
             e.printStackTrace();

@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * The main model for game
- * A gameboard holds two players and an array of positions where stones are still present
+ * A game board holds two players and an array of positions where stones are still present
  */
 public class GameBoard {
     private Player player1;
@@ -18,7 +18,7 @@ public class GameBoard {
     private List<Integer> turns;
     private int totalTurns = 0;
     private boolean hasWon = false;
-    private static Logger logger = LogManager.getLogger(FileManager.class);
+    private static Logger logger = LogManager.getLogger(GameBoard.class);
     /**
      * constructs a new game board
      * @param player1 first player
@@ -76,8 +76,9 @@ public class GameBoard {
         }
         else{
             logger.info("Player2 turn");
-        }
+
             player2.move();
+        }
         array[i][j] = false;
         checkWinner();
 
@@ -111,7 +112,7 @@ public class GameBoard {
     }
 
     /**
-     * resets the gameboard
+     * resets the game board
      */
     public void reset() {
         for (int i = 0; i < array.length; i++) {
@@ -129,7 +130,7 @@ public class GameBoard {
     }
 
     /**
-     * Changes the turn if and only if the player has made atleast one turn this round
+     * Changes the turn if and only if the player has made at least one turn this round
      */
     public void skipTurn() {
         if (turns.size() != 0) {
@@ -187,7 +188,7 @@ public class GameBoard {
     }
 
     /**
-     * method to set turn and haswon property
+     * method to set turn and has won property
      * @param winner
      *
      */

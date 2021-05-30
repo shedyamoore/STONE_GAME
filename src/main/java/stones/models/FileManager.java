@@ -38,10 +38,8 @@ public class FileManager {
      * @return this returns the instance of this class
      */
     public static FileManager getInstance() {
-        if (instance == null) {
+        if (instance == null)
             instance = new FileManager();
-            logger.info(instance);
-        }
         return instance;
     }
 
@@ -60,7 +58,7 @@ public class FileManager {
             old = "[]";
             }
 
-
+            logger.log(myLevel,old);
 
             JsonArray array = new Gson().fromJson(old, JsonArray.class);
 
@@ -76,7 +74,6 @@ public class FileManager {
                 gameBoard.getPlayer1().setMoves(moves1);
                 gameBoard.getPlayer2().setMoves(moves2);
                 gameBoard.setWinner(winner);
-                logger.info(winner);
                 games.add(gameBoard);
             }
 
@@ -114,9 +111,9 @@ public class FileManager {
         try{
             BufferedReader reader = new BufferedReader(new FileReader(file));
 
-
+            logger.log(myLevel,"Writing to file: "+file.getAbsolutePath());
             old = reader.readLine();
-
+            logger.log(myLevel,old);
 
             reader.close();
         }catch (FileNotFoundException e){
@@ -162,8 +159,8 @@ public class FileManager {
     }
 
     /**
-     * This is a method to return all the winners in the list, then put them in a  list
-     * @return List<Player>
+     * This is a method to return all the winners in the list, then put them in a list
+     * @return List<Player>  we get all the winners and put them in a  list
      *
      */
     public List<Player> getWinners() {

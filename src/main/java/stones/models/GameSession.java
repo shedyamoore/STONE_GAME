@@ -4,12 +4,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * singleton class to hold current gamesession
+ * singleton class to hold current game session
  */
 public class GameSession {
     private static GameSession instance;
     private GameBoard gameBoard;
-    private static Logger logger = LogManager.getLogger(FileManager.class);
+    private static Logger logger = LogManager.getLogger(GameSession.class);
     /**
      * private constructor for singleton design pattern
      */
@@ -18,7 +18,7 @@ public class GameSession {
     }
 
     /**
-     * method returns the gameboard instance
+     * method returns the game board instance
      * @return GameBoard
      */
     public GameBoard getGameBoard() {
@@ -26,7 +26,7 @@ public class GameSession {
     }
 
     /**
-     * method to updates the gameboard
+     * method to updates the game board
      * @param gameBoard
      */
     public void setGameBoard(GameBoard gameBoard) {

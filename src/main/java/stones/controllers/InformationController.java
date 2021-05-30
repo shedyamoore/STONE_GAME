@@ -24,7 +24,7 @@ public class InformationController {
     /**
      * Application logger
      */
-    private static final Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger(InformationController.class);
     /**
      * it checks if the user has entered valid name or not
      * @param actionEvent when continue button is pressed
