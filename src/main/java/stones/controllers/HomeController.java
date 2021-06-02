@@ -14,14 +14,14 @@ import stones.models.Player;
 import java.io.IOException;
 
 /**
- * home page for the applicaiton
+ * home page for the application
  */
 public class HomeController {
     public Label label;
     private static final Logger logger = LogManager.getLogger(HomeController.class);
     /**
-     * method that triggers when the start button is pressed
-     * @param actionEvent
+     * when the start button is pressed we call a method that trigger it which shows a dialog after
+     * @param actionEvent method that triggers when the start button is pressed
      */
     public void onStart(ActionEvent actionEvent) {
         try {
@@ -35,8 +35,8 @@ public class HomeController {
     }
 
     /**
-     * Method that get triggers  when the score button is pressed
-     * @param actionEvent
+     * The score button is pressed  when the high score button is clicked
+     * @param actionEvent Method that get triggers  when the score button is pressed
      */
     public void onHighScoreBtnClicked(ActionEvent actionEvent) {
 

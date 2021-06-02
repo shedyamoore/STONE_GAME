@@ -51,12 +51,13 @@ public class GameController implements Initializable {
     /**
      * default constructor to get game board instance from GameSession
      */
+
     public GameController() {
         gameBoard = GameSession.getInstance().getGameBoard();
     }
 
     /**
-     * method to initialize interface to load the graphics
+     * the resource bundle  is being called as well as the url
      * @param url
      * @param resourceBundle
      *
@@ -89,9 +90,8 @@ public class GameController implements Initializable {
 
 
     /**
-     * when the skip button is pressed it skips a turn and the next player moves
-     * game moves automatically but when skip is pressed it become manual
-     * @param actionEvent
+     *  the action on event is called  to skip the button
+     * @param  actionEvent an action to skip button
      */
     public void onSkipBtnClicked(ActionEvent actionEvent) {
         gameBoard.skipTurn();
@@ -99,8 +99,8 @@ public class GameController implements Initializable {
     }
 
     /**
-     * when the reset button is pressed it resets the game board and updates the views
-     * @param actionEvent
+     *  the reset button is being pressed if it is pressed ,it resets the game board and updates the views
+     * @param actionEvent when the reset button is pressed
      *
      */
     public void onResetBtnClicked(ActionEvent actionEvent) {
@@ -110,8 +110,8 @@ public class GameController implements Initializable {
     }
 
     /**
-     * when back button is pressed application goes back to home screen
-     * @param actionEvent
+     * when the back button is pressed  the application goes back to home screen
+     * @param actionEvent  back button is pressed
      *
      */
     public void onBackBtnClicked(ActionEvent actionEvent) {
@@ -120,13 +120,16 @@ public class GameController implements Initializable {
             logger.info("Back button click");
         } catch (IOException e) {
             e.printStackTrace();
+            //Exception is the base class for exceptions thrown w
+            // hile accessing information using streams,
+            // files and directories
         }
     }
 
 
     /**
-     * makes a move on the screen
-     * @param actionEvent
+     *  action event activated to make a move on the screen
+     * @param actionEvent makes a move
      *
      */
     public void makeMove(ActionEvent actionEvent) {
@@ -183,7 +186,10 @@ public class GameController implements Initializable {
                 break;
         }
         //updating the board
-        updateBoard();
+        updateBoard();//this codes checks to see if there is a winner in the
+        // get winner from the get winner method if the winner is not null
+        // it gets the winner and shows it in the alert box
+
         if (gameBoard.getWinner()!=null){
             FileManager.getInstance().addLog(gameBoard);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -203,6 +209,7 @@ public class GameController implements Initializable {
      * by looping through the array  and setting the visibility of the buttons
      */
     private void updateBoard() {
+        // each time this method runs it refreshes all the buttons to see if they are on or off or if the stones are present or not.
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 Button button = getButton(i * 4 + j);
@@ -217,12 +224,11 @@ public class GameController implements Initializable {
         }
     }
     /**
-     * method to get the button based on its position
-     * @param index
-     *
+     *  this gets the index button based on its position
+     * @param index method to get the index button
      */
     private Button getButton(int index) {
-        logger.info("Button index is "+ index);
+        //logger.info("Button index is "+ index);
         switch (index) {
             case 0:
                 return btnA;

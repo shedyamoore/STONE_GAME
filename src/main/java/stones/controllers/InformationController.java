@@ -26,7 +26,7 @@ public class InformationController {
      */
     private static final Logger logger = LogManager.getLogger(InformationController.class);
     /**
-     * it checks if the user has entered valid name or not
+     * the continue button is pressed in order to start the game
      * @param actionEvent when continue button is pressed
      *
      */
@@ -57,6 +57,7 @@ public class InformationController {
         try {
             logger.info("Back Button Clicked");
             Game.setRoot("home");
+            //this sets the destination for the command after it is being pressed
         } catch (IOException e) {
             e.printStackTrace();
         }

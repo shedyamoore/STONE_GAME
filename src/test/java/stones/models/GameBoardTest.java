@@ -27,7 +27,8 @@ class GameBoardTest {
     void resetTest() {
         GameBoard gameBoard = new GameBoard(new Player("player1"),new Player("player2"));
         gameBoard.makeTurn(0,0);
-        assertFalse(gameBoard.getArray()[0][0]);
+        gameBoard.reset();
+        assertTrue(gameBoard.getArray()[0][0]);
     }
 
     @Test

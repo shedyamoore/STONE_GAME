@@ -23,6 +23,8 @@ public class FileManager {
     private List<GameBoard> games;
     private static Logger logger = LogManager.getLogger(FileManager.class);
     Level myLevel = Level.forName("FILEMANAGER", 350);
+    // A log level or log severity is a piece of information telling how important a given log message is. It is a simple,
+    // yet very powerful way of distinguishing log events from each other
 
     /**
      * this is a private constructor to prevent access from outside the class
@@ -31,11 +33,14 @@ public class FileManager {
     private FileManager() {
         games = new ArrayList<>();
         read_logs();
+        // Allows an application to read the low-level system log files. String · READ_PHONE_NUMBERS.
+        // Allows read access to ...
     }
 
     /**
-     * method to return an instance of file manager
+     *
      * @return this returns the instance of this class
+     * method to return an instance of file manager
      */
     public static FileManager getInstance() {
         if (instance == null)
@@ -59,10 +64,10 @@ public class FileManager {
             }
 
             logger.log(myLevel,old);
-
+   //this method passes what ever is stores in the old method into the json array class
             JsonArray array = new Gson().fromJson(old, JsonArray.class);
 
-
+//this stores the way the json array is going to look like
             for (JsonElement element : array) {
                 JsonObject obj = (JsonObject) element;
                 String player1 = String.valueOf(obj.get("player1Name"));
@@ -85,8 +90,8 @@ public class FileManager {
 
 
     /**
-     * this methods adds a new log to file
-     * @param game
+     * a method is called to add a new log to file
+     * @param game this methods adds a new log to file
      *
      */
     public void addLog(GameBoard game) {
@@ -100,8 +105,8 @@ public class FileManager {
     }
 
     /**
-     * method to save game session array into json db
      *
+     * monitors the current game session
      * @param gameboard this is the current game session object
      * @throws java.lang.Exception If for any reason it could not write current game session throw java.lang.Exception
      */
@@ -110,8 +115,9 @@ public class FileManager {
         File file = new File(FILENAME);
         try{
             BufferedReader reader = new BufferedReader(new FileReader(file));
-
             logger.log(myLevel,"Writing to file: "+file.getAbsolutePath());
+            //The getAbsolutePath() method is a part of File class. This function returns the
+            // absolute pathname of the given file object.If the pathname of the
             old = reader.readLine();
             logger.log(myLevel,old);
 
@@ -132,9 +138,8 @@ public class FileManager {
         logger.info("About to save finished game with winner name :"+ gameboard.getWinner());
         array.add(sampleObject);
         FileWriter writer =
-                new FileWriter(
+               new FileWriter(
                         new File(FILENAME),false);
-
         StringBuilder objects = new StringBuilder();
         objects.append("[");
         for (int i = 0; i < array.size(); i++) {
@@ -147,20 +152,22 @@ public class FileManager {
         objects.append("]");
         writer.write(objects.toString());
         writer.flush();
+        //write the contents of the buffer and  then empties it
         writer.close();
     }
 
     /**
-     * method to return list of gameboard
-     * @return List<GameBoard>
+     * method  to return list of methods
+     * @return list method to return list of gameboard
      */
     public List<GameBoard> getGames() {
         return games;
     }
 
     /**
-     * This is a method to return all the winners in the list, then put them in a list
-     * @return List<Player>  we get all the winners and put them in a  list
+     * we get the list and put them in a  list This is a method to return all the winners in the list
+     * @return list we get all the winners
+     *
      *
      */
     public List<Player> getWinners() {

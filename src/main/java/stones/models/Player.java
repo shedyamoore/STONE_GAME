@@ -11,8 +11,9 @@ public class Player {
     private int moves;
     private static Logger logger = LogManager.getLogger(FileManager.class);
     /**
-     * Player constructor
+     *
      * @param name name of the player
+     *           Player constructor
      */
     public Player(String name) {
         this.name = name;
@@ -26,9 +27,10 @@ public class Player {
     }
 
     /**
-     * Player constructor
+     *
      * @param name name of the player
      * @param moves name of the player
+     *    Player constructor
      */
     public Player(String name, int moves) {
         this.name = name;
@@ -48,8 +50,8 @@ public class Player {
     }
 
     /**
-     * name of the player
-     * @return String
+     *
+     * @return String  name of the player
      */
     public String getName() {
         return name;
@@ -63,16 +65,16 @@ public class Player {
     }
 
     /**
-     * method to return moves made by the player
-     * @return int
+     *
+     * @return int method to return moves made by the player
      */
     public int getMoves() {
         return moves;
     }
 
     /**
-     * method to update player moves
-     * @param moves updates moves
+     *
+     * @param moves updates moves method to update player moves
      */
     public void setMoves(int moves) {
         this.moves = moves;

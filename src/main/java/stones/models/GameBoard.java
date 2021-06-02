@@ -20,7 +20,7 @@ public class GameBoard {
     private boolean hasWon = false;
     private static Logger logger = LogManager.getLogger(GameBoard.class);
     /**
-     * constructs a new game board
+     * constructs a new game board based on the players involved
      * @param player1 first player
      * @param player2 second player
      *
@@ -34,23 +34,24 @@ public class GameBoard {
     }
 
     /**
-     * makes move and if 4 moves are done then turn is automatically shifted to other player
-     * This also checks if the turn is valid and is adjacent to last few turns by same player
+     *
      * @param i i position
      * @param j j position
      *
      */
     public void makeTurn(int i, int j) {
         boolean valid = false;
-
+// this method checks if the new turn is valid by check the adjacency of it
         if (!turns.isEmpty()) {
             for (int old : turns) {
-              int oi = old / 4;
+              int oi = old / 4;// where oi represents the columns and oj represent the old row
               int oj = old % 4;
+// this is a  list and stores 4 turns by the same player
 
               if (oi!=0){
                   if (oi - 1 ==i && oj == j)
                       valid = true;
+                  //this checks it from left to right
               }
               if (oi!=3){
                   if (oi + 1 ==i && oj == j)
@@ -104,8 +105,8 @@ public class GameBoard {
     }
 
     /**
-     * return total turns made so far
-     * @return int
+     * a method to return the total turns gotten so far
+     * @return int return total turns made so far
      */
     public int getTotalTurns() {
         return totalTurns;
@@ -141,23 +142,23 @@ public class GameBoard {
 
 
     /**
-     * method to return first player
-     * @return Player
+     * A method is called to return the first player that is being registered in the game
+     * @return Player method to return first player
      */
     public Player getPlayer1() {
         return player1;
     }
 
     /**
-     * Method to return the second player
-     * @return Player
+     * A method is called to return the second player in the game
+     * @return Player Method to return the second player
      */
     public Player getPlayer2() {
         return player2;
     }
 
     /**
-     * 2D array representation of stones
+     * return boolean 2D array representation of stones
      * @return Boolean
      */
     public boolean[][] getArray() {
@@ -167,15 +168,17 @@ public class GameBoard {
     /**
      * method to check if is player1 or player2 turn
      * @return this returns the current players turn
+     *
      */
     public boolean isPlayer1Turn() {
         return turn;
     }
 
     /**
-     * if there is a winner it returns the winner
-     * else returns null
+     * method is being called to check if there is a winner or not
      * @return
+     * if there is a winner it returns the winner
+     *      else returns null
      *
      */
     public Player getWinner() {
@@ -188,8 +191,8 @@ public class GameBoard {
     }
 
     /**
-     * method to set turn and has won property
-     * @param winner
+     * there is a method being initiated to set turn and has won property
+     * @param winner method to set turn and has won property
      *
      */
     public void setWinner(String winner) {
